@@ -1,0 +1,16 @@
+﻿<Window x:Class="TryMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewmodel="clr-namespace:TryMVVM.ViewModels"
+        Title="Range Indicator" Height="189" Width="224">
+    <Window.Resources>
+        <viewmodel:RangeViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource ViewModel}}">
+        <Label Content="Range" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,-0.192"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="58,13,0,0" TextWrapping="Wrap" Text="{Binding Range.Range, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Indicator : " HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Criticality}" Background="{Binding Path=BGColor}" HorizontalAlignment="Left" Margin="95,48,0,0" VerticalAlignment="Top" Height="26" Width="57" RenderTransformOrigin="0.333,0"/>
+        <Button Content="Submit" Command="{Binding SubmitCommand}" HorizontalAlignment="Left" Margin="15,85,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
